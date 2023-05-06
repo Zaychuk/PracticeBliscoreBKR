@@ -1,6 +1,6 @@
 using PracticeBliscoreBKR.Mappers;
-using PracticeBliscoreBKR.Repositories;
-using PracticeBliscoreBKR.Services;
+using PracticeBliscoreBKR.WebApi.Repositories;
+using PracticeBliscoreBKR.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,8 +19,8 @@ builder.Services.AddCors(policyBuilder =>
         policy.WithOrigins("*").AllowAnyMethod().AllowAnyHeader())
 );
 
-builder.Services.AddSingleton<IProductRepository, ProductRepository>();
-builder.Services.AddSingleton<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 
 var app = builder.Build();

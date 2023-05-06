@@ -1,12 +1,14 @@
-﻿using PracticeBliscoreBKR.Entities;
+﻿using PracticeBliscoreBKR.WebApi.Entities;
 
-namespace PracticeBliscoreBKR.Repositories;
+namespace PracticeBliscoreBKR.WebApi.Repositories;
 
 public interface IProductRepository
 {
-    void CreateDefaultProducts();
+    void Create13DefaultProducts();
+    void CreateProduct(ProductEntity product);
     List<ProductEntity> GetAllProducts();
     ProductEntity GetProductByName(string name);
+    ProductEntity GetProductById(Guid Id);
     List<ProductEntity> GetProductsByCategory(string category);
     List<ProductEntity> GetProductsByManufacturer(string manufacturer);
 }
@@ -25,6 +27,11 @@ public class ProductRepository : IProductRepository
         return ProductsDatabase.FirstOrDefault(p => p.Name == name);
     }
 
+    public ProductEntity GetProductById(Guid id)
+    {
+        return ProductsDatabase.FirstOrDefault(p => p.Id == id);
+    }
+
     public List<ProductEntity> GetProductsByManufacturer(string manufacturer)
     {
         return ProductsDatabase.Where(p => p.Manufacturer == manufacturer).ToList();
@@ -35,7 +42,7 @@ public class ProductRepository : IProductRepository
         return ProductsDatabase.Where(p => p.Category == category).ToList();
     }
 
-    public void CreateDefaultProducts()
+    public void Create13DefaultProducts()
     {
         ProductsDatabase.Clear();
         ProductsDatabase.AddRange(new List<ProductEntity>
@@ -54,5 +61,10 @@ public class ProductRepository : IProductRepository
             new ProductEntity("Patagonia Better Sweater", "Warm and comfortable sweater made from recycled materials", 139m, 25, "https://example.com/patagoniabettersweater.jpg", "Patagonia", "Fashion"),
             new ProductEntity("Dyson V11 Cordless Vacuum", "Powerful and versatile vacuum cleaner with advanced features", 699.99m, 7, "https://example.com/dysonv11.jpg", "Dyson", "Home & Kitchen"),
         });
+    }
+
+    public void CreateProduct(ProductEntity product)
+    {
+        ProductsDatabase.Add(product);
     }
 }

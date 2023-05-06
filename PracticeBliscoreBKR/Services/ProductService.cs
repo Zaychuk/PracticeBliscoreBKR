@@ -1,17 +1,20 @@
 ﻿using AutoMapper;
-using PracticeBliscoreBKR.Dtos;
-using PracticeBliscoreBKR.Repositories;
+using PracticeBliscoreBKR.WebApi.Dtos;
+using PracticeBliscoreBKR.WebApi.Entities;
+using PracticeBliscoreBKR.WebApi.Repositories;
 
-namespace PracticeBliscoreBKR.Services;
+namespace PracticeBliscoreBKR.WebApi.Services;
 
 public interface IProductService
 {
     bool CheckIfProductIsAvailable(string name);
-    void CreateDefaultProducts();
+    void Create13DefaultProducts();
     List<ProductDto> GetAllProducts();
     ProductDto GetProductByName(string name);
+    ProductDto GetProductById(Guid id);
     List<ProductDto> GetProductsByCategory(string category);
     List<ProductDto> GetProductsByManufacturer(string manufacturer);
+    Guid CreateProduct(CreateProductDto product);
 }
 
 public class ProductService : IProductService
@@ -25,9 +28,9 @@ public class ProductService : IProductService
         _mapper = mapper;
     }
 
-    public void CreateDefaultProducts()
+    public void Create13DefaultProducts()
     {
-        _productRepository.CreateDefaultProducts();
+        _productRepository.Create13DefaultProducts();
     }
 
     public List<ProductDto> GetAllProducts()
@@ -40,6 +43,13 @@ public class ProductService : IProductService
     public ProductDto GetProductByName(string name)
     {
         var product = _productRepository.GetProductByName(name);
+
+        return _mapper.Map<ProductDto>(product);
+    }
+
+    public ProductDto GetProductById(Guid id)
+    {
+        var product = _productRepository.GetProductById(id);
 
         return _mapper.Map<ProductDto>(product);
     }
@@ -63,5 +73,14 @@ public class ProductService : IProductService
         var products = _productRepository.GetProductsByCategory(category);
 
         return products.Select(product => _mapper.Map<ProductDto>(product)).ToList();
+    }
+
+    public Guid CreateProduct(CreateProductDto dto)
+    {
+        var product = _mapper.Map<ProductEntity>(dto);
+        product.Id = Guid.NewGuid();
+        _productRepository.CreateProduct(product);
+
+        return product.Id;
     }
 }

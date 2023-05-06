@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PracticeBliscoreBKR.Dtos;
-using PracticeBliscoreBKR.Services;
+using PracticeBliscoreBKR.WebApi.Dtos;
+using PracticeBliscoreBKR.WebApi.Services;
+using PracticeBliscoreBKR.WebApi.Validators;
 
-namespace PracticeBliscoreBKR.Controllers;
+namespace PracticeBliscoreBKR.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -16,13 +17,20 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost("create/default")]
-    public void CreateDefaultProducts()
+    public void Create13DefaultProducts()
     {
-        _productService.CreateDefaultProducts();
+        _productService.Create13DefaultProducts();
+    }
+
+    [HttpPost("create")]
+    public ActionResult<Guid> CreateProduct(CreateProductDto dto)
+    {
+        ProductsValidator.ValidateCreateProductDto(dto);
+        return _productService.CreateProduct(dto);
     }
 
     [HttpGet("all")]
-    public List<ProductDto> GetAllProducts()
+    public ActionResult<List<ProductDto>> GetAllProducts()
     {
         var products = _productService.GetAllProducts();
 
@@ -30,15 +38,23 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("byName")]
-    public ProductDto GetProductByName(string name)
+    public ActionResult<ProductDto> GetProductByName(string name)
     {
         var product = _productService.GetProductByName(name);
 
         return product;
     }
 
+    [HttpGet("byId")]
+    public ActionResult<ProductDto> GetProductById(Guid id)
+    {
+        var product = _productService.GetProductById(id);
+
+        return product;
+    }
+
     [HttpGet("isAvailable")]
-    public bool CheckIfProductIsAvailable(string name)
+    public ActionResult<bool> CheckIfProductIsAvailable(string name)
     {
         var product = _productService.GetProductByName(name);
 
@@ -46,7 +62,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("byManufacturer")]
-    public List<ProductDto> GetProductsByManufacturer(string manufacturer)
+    public ActionResult<List<ProductDto>> GetProductsByManufacturer(string manufacturer)
     {
         var products = _productService.GetProductsByManufacturer(manufacturer);
 
@@ -54,7 +70,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("byCategoty")]
-    public List<ProductDto> GetProductsByCategory(string category)
+    public ActionResult<List<ProductDto>> GetProductsByCategory(string category)
     {
         var products = _productService.GetProductsByCategory(category);
 
