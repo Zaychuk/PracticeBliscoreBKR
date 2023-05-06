@@ -1,4 +1,4 @@
-﻿namespace PracticeBliscoreBKR.WebApi.Entities;
+﻿namespace PracticeBliscoreBKR.Entities;
 
 public class ProductEntity
 {

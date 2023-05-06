@@ -1,8 +1,8 @@
 ﻿using PracticeBliscoreBKR.Mappers;
-using PracticeBliscoreBKR.WebApi.Controllers;
-using PracticeBliscoreBKR.WebApi.Dtos;
-using PracticeBliscoreBKR.WebApi.Repositories;
-using PracticeBliscoreBKR.WebApi.Services;
+using PracticeBliscoreBKR.Controllers;
+using PracticeBliscoreBKR.Dtos;
+using PracticeBliscoreBKR.Repositories;
+using PracticeBliscoreBKR.Services;
 
 namespace PracticeBliscoreBKR.Tests.ProductsControllerTests;
 

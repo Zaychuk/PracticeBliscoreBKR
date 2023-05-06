@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using PracticeBliscoreBKR.WebApi.Dtos;
-using PracticeBliscoreBKR.WebApi.Entities;
-using PracticeBliscoreBKR.WebApi.Repositories;
+using PracticeBliscoreBKR.Dtos;
+using PracticeBliscoreBKR.Entities;
+using PracticeBliscoreBKR.Repositories;
 
-namespace PracticeBliscoreBKR.WebApi.Services;
+namespace PracticeBliscoreBKR.Services;
 
 public interface IProductService
 {

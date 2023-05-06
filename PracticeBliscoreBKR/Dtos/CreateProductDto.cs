@@ -1,4 +1,4 @@
-﻿namespace PracticeBliscoreBKR.WebApi.Dtos;
+﻿namespace PracticeBliscoreBKR.Dtos;
 
 public class CreateProductDto
 {

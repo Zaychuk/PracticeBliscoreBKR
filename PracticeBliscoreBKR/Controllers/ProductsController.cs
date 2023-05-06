@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PracticeBliscoreBKR.WebApi.Dtos;
-using PracticeBliscoreBKR.WebApi.Services;
-using PracticeBliscoreBKR.WebApi.Validators;
+using PracticeBliscoreBKR.Dtos;
+using PracticeBliscoreBKR.Services;
+using PracticeBliscoreBKR.Validators;
 
-namespace PracticeBliscoreBKR.WebApi.Controllers;
+namespace PracticeBliscoreBKR.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

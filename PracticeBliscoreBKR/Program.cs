@@ -1,6 +1,6 @@
 using PracticeBliscoreBKR.Mappers;
-using PracticeBliscoreBKR.WebApi.Repositories;
-using PracticeBliscoreBKR.WebApi.Services;
+using PracticeBliscoreBKR.Repositories;
+using PracticeBliscoreBKR.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

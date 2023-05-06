@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PracticeBliscoreBKR\PracticeBliscoreBKR.WebApi.csproj" />
+    <ProjectReference Include="..\PracticeBliscoreBKR\PracticeBliscoreBKR.csproj" />
   </ItemGroup>
 
 </Project>
