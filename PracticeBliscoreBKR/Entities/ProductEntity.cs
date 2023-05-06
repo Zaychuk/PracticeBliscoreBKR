@@ -1,10 +1,10 @@
-﻿namespace PracticeBliscoreBKR.Entities;
+﻿namespace PracticeBliscoreBKR.WebApi.Entities;
 
 public class ProductEntity
 {
     public ProductEntity(string name, string description, decimal price, int stock, string imageUrl, string manufacturer, string category)
     {
-        Id =  Guid.NewGuid();
+        Id = Guid.NewGuid();
         Name = name;
         Description = description;
         Price = price;
