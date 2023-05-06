@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using PracticeBliscoreBKR.WebApi.Dtos;
-using PracticeBliscoreBKR.WebApi.Entities;
+using PracticeBliscoreBKR.Dtos;
+using PracticeBliscoreBKR.Entities;
 
 namespace PracticeBliscoreBKR.MapperProfiles;
 

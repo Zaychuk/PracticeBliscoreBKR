@@ -1,6 +1,6 @@
-﻿using PracticeBliscoreBKR.WebApi.Dtos;
+﻿using PracticeBliscoreBKR.Dtos;
 
-namespace PracticeBliscoreBKR.WebApi.Validators;
+namespace PracticeBliscoreBKR.Validators;
 
 public static class ProductsValidator
 {

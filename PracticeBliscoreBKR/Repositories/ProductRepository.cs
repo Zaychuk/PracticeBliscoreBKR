@@ -1,6 +1,6 @@
-﻿using PracticeBliscoreBKR.WebApi.Entities;
+﻿using PracticeBliscoreBKR.Entities;
 
-namespace PracticeBliscoreBKR.WebApi.Repositories;
+namespace PracticeBliscoreBKR.Repositories;
 
 public interface IProductRepository
 {
