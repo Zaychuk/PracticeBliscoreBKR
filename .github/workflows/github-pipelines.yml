@@ -9,14 +9,20 @@ on:
   pull_request:
     branches: [ "main" ]
 
-    jobs:
-      build:
-     runs-on: windows-latest
-     steps:
-      — uses: actions/checkout@v1
-      — name: Build DotNET35
-      run: |
-        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-        .\MSBuild.exe $Env:GITHUB_WORKSPACE\PracticeBliscoreBKR\PracticeBliscoreBKR.WebApi.csproj
-      - name: Test
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
       run: dotnet test --no-build --verbosity normal
