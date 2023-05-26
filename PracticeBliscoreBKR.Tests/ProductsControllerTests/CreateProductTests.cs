@@ -118,7 +118,7 @@ public class CreateProductTests
         var createdProduct = _sutController.GetProductById(result.Value);
 
         Assert.NotNull(createdProduct.Value);
-        Assert.Equal(dto.Name, createdProduct.Value.Name + "das");
+        Assert.Equal(dto.Name, createdProduct.Value.Name);
         Assert.Equal(dto.Description, createdProduct.Value.Description);
         Assert.Equal(dto.Category, createdProduct.Value.Category);
         Assert.Equal(dto.Manufacturer, createdProduct.Value.Manufacturer);
